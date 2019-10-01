@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+	<TITLE>Javascript Example</TITLE>
+	<SCRIPT>
+		function init() {
+			highestRatedTomCruiseSciFiMovies();
+		}
+		
+		const highestRatedTomCruiseSciFiMovies = async () => {
+			const response = await fetch('https://api.themoviedb.org/3/discover/movie?with_genres=878&with_cast=500&sort_by=vote_average.desc&api_key=247c47936bed65959f5837b6aa7bbce9&amp;language=en-US&amp;page=2');
+			const res = await response.json();
+			console.log(res);
+			res.results.forEach(listItem);
+		}
+		
+		function listItem(value, index, array) {
+			var node = document.createElement("LI");
+			var textnode = document.createTextNode(value.title + " - " + value.overview);
+			node.appendChild(textnode);
+			document.getElementById("list").appendChild(node);
+		}
+	</SCRIPT
+</HEAD>
+<BODY onload="init()">
+	<div id="container" style="border: 1px solid black;">
+		<p>Tom Cruise Top Sci-Fi Movies</p>
+		<ol id="list"></ol>
+	</div>
+</BODY>
+</HTML>

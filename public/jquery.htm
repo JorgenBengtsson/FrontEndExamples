@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+	<TITLE>jQuery Example</TITLE>
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	<SCRIPT>
+		$(document).ready(function() {
+			var list = ["First", "Second", "Third", "Fourth"];
+			
+			$('#introText').html("jQuery Example");
+			
+			$('#clickButton').click(function () {
+				$('.introText').html("So you clicked the button!!!");
+			});
+			
+			$('.makeItBold').click(function () {
+				$('.introText').css("font-weight", "Bold");
+			});
+			
+			$('.hideShowElement').click(function () {
+				$('#container').toggle();
+			});
+			
+			$('.fadeElement').click(function () {
+				$('#container').fadeIn(3000);
+			});
+			
+			$('#showListOnPage').click(function () {
+				$(list).each(function(index) {
+					var el = document.createElement("li");
+					$(el).html(list[index]);
+					$(el).click(function() {
+						$(this).fadeOut(500);
+					});
+					$('#list').append(el);
+				});
+			});
+			
+			$('.copyText').click(function () {
+				var textToBeCopied = $('.inputField').val();
+				$('.copiedText').text(textToBeCopied);
+			});
+			
+		});
+	</SCRIPT
+</HEAD>
+<BODY>
+	<div id="container" style="border: 1px solid black;">
+		<p id="introText" class="introText"></p>
+		<p id="introText" class="introText"></p>
+		<ul id="list"></ul>
+	</div>
+	
+	<br>
+	
+	<button type="button" id="clickButton">Click Me!</button><br>
+	<button type="button" class="makeItBold">Make Bold text</button><br>
+	<button type="button" class="hideShowElement">Hide/Show</button><br>
+	<button type="button" class="fadeElement">Fade In</button><br>
+	<button type="button" id="showListOnPage">Show List</button><br>
+	
+	<br>
+	
+	<input type="text" class="inputField" /><br>
+	<input type="button" class="copyText" value="Copy text" /><br>
+	
+	<br>
+	
+	<p class="copiedText"></p>
+	
+</BODY>
+</HTML>

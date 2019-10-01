@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+	<TITLE>Javascript Example</TITLE>
+	<SCRIPT>
+		var show = true;
+		var list = ["Second", "First", "Third", "Fifth"];
+		
+		function init() {
+			document.getElementById("introText").innerHTML = "JavaScript Example";
+			document.getElementById("container").style.display = show ? "block" : "none";
+			console.log("Page is now loaded!!!");
+		}
+		
+		function showListOnPage() {
+			list.forEach(listItem);
+		}
+		
+		function listItem(value, index, array) {
+			var node = document.createElement("LI");
+			var textnode = document.createTextNode(value);
+			node.appendChild(textnode);
+			document.getElementById("list").appendChild(node);
+		}
+		
+		function clickTheButton() {
+			document.getElementById("introText").innerHTML = "So you Clicked!!!";
+		}
+		
+		function changeStyle() {
+			document.getElementById("introText").style.fontWeight = "900";
+		}
+		
+		function hideShowElement() {
+			show = !show;
+			document.getElementById("container").style.display = show ? "block" : "none";
+		}
+	</SCRIPT
+</HEAD>
+<BODY onload="init()">
+	<div id="container" style="border: 1px solid black;">
+		<p id="introText"></p>
+		<ol id="list"></ol>
+	</div>
+	
+	<br>
+	
+	<button type="button" onclick="clickTheButton()">Click Me!</button><br>
+	<button type="button" onclick="changeStyle()">Make Bold text</button><br>
+	<button type="button" onclick="hideShowElement()">Hide/Show</button><br>
+	<button type="button" onclick="window.alert('This is a warning!')">Warn me</button><br>
+	<button type="button" onclick="showListOnPage()">Show List</button><br>
+	
+	<SCRIPT>
+		
+	</SCRIPT>
+</BODY>
+</HTML>

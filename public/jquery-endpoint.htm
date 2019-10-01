@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+	<TITLE>jQuery Example</TITLE>
+	<script
+		src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+		crossorigin="anonymous"></script>
+	<SCRIPT>
+		$(document).ready(function() {
+			$.get("https://api.themoviedb.org/3/discover/movie?with_genres=878&with_cast=500&sort_by=vote_average.desc&api_key=247c47936bed65959f5837b6aa7bbce9&amp;language=en-US&amp;page=1",
+			function( data ) {
+				console.log(data);
+				$(data.results).each(function(index) {
+					var el = document.createElement("li");
+					$(el).html(data.results[index].title);
+					$('#list').append(el);
+				});
+			});
+		});
+	</SCRIPT
+</HEAD>
+<BODY>
+	
+	<div id="container" style="border: 1px solid black;">
+		<p>Tom Cruise Top Sci-Fi Movies</p>
+		<ol id="list"></ol>
+	</div>
+	
+</BODY>
+</HTML>
