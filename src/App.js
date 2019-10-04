@@ -1,26 +1,49 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Button from "react-bootstrap/Button";
+import ButtonToolbar from "react-bootstrap/ButtonGroup";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import DisplayExample from "./components/DisplayExamples/DisplayExample";
+
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = { exampleToShow: "none" };
+  }
+  displayNavigationExample() {
+    console.log("nav examnple");
+  }
+  render() {
+    return (
+      <>
+        <ButtonToolbar>
+          <Button
+            variant="outline-primary"
+            onClick={() => this.setState({ exampleToShow: "Fetch Examples" })}
+          >
+            Fetch Examples
+          </Button>
+          <Button
+            variant="outline-primary"
+            onClick={() =>
+              this.setState({ exampleToShow: "SearchMovieDB Examples" })
+            }
+          >
+            SearchMovieDB Examples
+          </Button>
+          <Button
+            variant="outline-primary"
+            onClick={() =>
+              this.setState({ exampleToShow: "ThirdPartyPackages Examples" })
+            }
+          >
+            ThirdPartyPackages Examples
+          </Button>
+        </ButtonToolbar>
+        <div style={{ marginTop: "20px" }}>
+          <DisplayExample exampleName={this.state.exampleToShow} />
+        </div>
+      </>
+    );
+  }
 }
-
-export default App;
